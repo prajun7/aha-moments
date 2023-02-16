@@ -1,5 +1,10 @@
 # Notes
 
+### Java Basic:
+#### Array:
+  - Declaring array : int intArray[];    
+  - Allocating memory to array : int Array = new int[20]; 
+
 ### We are using React.js for the frontend and ASP.NET for the backend.
 #### React.js
   - Using react.js with TypeScript and JavaScript
