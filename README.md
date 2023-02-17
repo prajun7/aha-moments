@@ -1,9 +1,43 @@
 # Notes
 
 ### Java Basic:
+  - Indexing of array, arraylist starts from 0.
+  - The length or the size of the array, arraylist, linkedlist, string starts with 1.
+
 #### Array:
-  - Declaring array : int intArray[];    
-  - Allocating memory to array : int Array = new int[20]; 
+  - Initiating array of size 20: 
+  ```
+    int[] intArray = new int[20];
+  ```
+  
+  - In a situation where the size of the array and variables of the array are already known, array literals can be used: 
+  ```
+    int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
+  ```
+  
+  - Get length of the array by using `length`:
+  ```
+    string[] strArray = new string[]{ "one", "two", "three", "four", "five", "six", "seven" };
+    int size = strArray.length
+    // size will be 7
+  ```
+  
+  - Accessing Array Elements using for Loop:
+  ```
+  for (int i = 0; i < arr.length; i++) {
+    System.out.println("Element at index " + i + " : "+ arr[i]);
+  }
+  ```
+  
+
+  
+#### Linked List Implementation:
+
+
+#### Queue Implementation:
+
+
+#### Stack Implementation:
 
 ### We are using React.js for the frontend and ASP.NET for the backend.
 #### React.js
