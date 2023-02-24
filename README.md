@@ -42,6 +42,9 @@
 
 #### Stack Implementation:
 
+
+#### Basic SQL:
+
 ### We are using React.js for the frontend and ASP.NET for the backend.
 #### React.js
   - Using react.js with TypeScript and JavaScript
