@@ -30,6 +30,25 @@
   ```
   
   #### ArrayList:
+  `import java.util.ArrayList;`
+  
+  - Gotchas
+  ```
+  We cannot specify int as the type of an ArrayList. 
+  An int is not a "ReferenceType." 
+  We have to use Integer as the type because ArrayLists can only hold objects, not primitive values.
+  Infact we cannot use any primitive type in ArrayList.
+  Primitive types are the most basic data types available within the Java language. 
+  There are 8: boolean , byte , char , short , int , long , float and double
+  ```
+  
+  - Initiate an ArrayList
+  ```
+  ArrayList<String> cars = new ArrayList<String>();
+  ```
+  ```
+  ArrayList<Integer> cars = new ArrayList<Integer>();
+  ```
   
 
   
