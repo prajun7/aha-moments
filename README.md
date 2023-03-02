@@ -58,7 +58,7 @@
 #### Queue Implementation:
 
 
-#### Stack Implementation:
+#### Stack Implementation: 
 
 
 #### Basic SQL:
