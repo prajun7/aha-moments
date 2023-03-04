@@ -2,7 +2,7 @@
 
 ### Java Basic:
   - Indexing of array, arraylist starts from 0.
-  - The length or the size of the array, arraylist, linkedlist, string starts with 1.
+  - The length or the size of the array, arraylist, linkedlist, string starts with 1. 
 
 #### Array:
   - Initiating array of size 20: 
@@ -62,6 +62,26 @@
 
 
 #### Basic SQL:
+- Select all the rows from a table
+```
+SELECT * FROM table_name;
+```
+These will select all the rows from the given table. It will better to use WHERE clause or LIMIT,
+```
+SELECT * FROM stores WHERE store_id = 200;
+```
+```
+SELECT * FROM reports WHERE store_id = 200 LIMIT 10; 
+```
+
+- Alter table to add a column
+```
+ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_name' AFTER some_column_name; 
+```
+That is, to add a settings to a  `stores` table we can add a column called `has_analytics` with default value of `0`, which represents `False`
+```
+ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
+```
 
 ### We are using React.js for the frontend and ASP.NET for the backend.
 #### React.js
