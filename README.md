@@ -92,7 +92,7 @@ ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
   - In React we need to use useMemo to stop rerendering every time. 
   - Even if we change a value in the react, it would rerender all the components.
   - When we change a value, React rerenders all the components eventhough those components are not using that value.
-  - So, it is little bit difficult to stop rerendering each time.
+  - So, it is little bit difficult to stop rerendering each time. 
 
 
 ### We are using Ember.js for the frontend and spring boot for the backend.
