@@ -2,12 +2,12 @@
 
   > [Array](https://github.com/prajun7/aha-moments#array)<br>
   > [ArrayList](https://github.com/prajun7/aha-moments#arraylist)<br>
-  > [Linked List](https://github.com/prajun7/aha-moments#linked-list)<br>
+  > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br>
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1. 
 
-#### Array:
+#### Array
   - Initiating array of size 20: 
   ```sh
     int[] intArray = new int[20];
@@ -32,7 +32,7 @@
   }
   ```
   
-  #### ArrayList:
+  #### ArrayList
   `import java.util.ArrayList;`
   
 
@@ -77,8 +77,8 @@
   > And import the correct package:
 `import java.util.Arrays;`
  
-#### Linked List:
-- Initiate a Linked List
+#### LinkedList
+- Initiate a LinkedList
 ```sh
 LinkedList<String> cars = new LinkedList<String>();
 ```
@@ -87,13 +87,13 @@ LinkedList<String> cars = new LinkedList<String>();
 
 
 
-#### Queue Implementation:
+#### Queue Implementation
 
 
-#### Stack Implementation: 
+#### Stack Implementation
 
 
-#### Basic SQL:
+#### Structured query language (SQL)
 - Select all the rows from a table
 ```sh
 SELECT * FROM table_name;
