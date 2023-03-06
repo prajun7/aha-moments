@@ -1,5 +1,9 @@
 # Notes
 
+  > [Array](https://github.com/prajun7/aha-moments#array)<br>
+  > [ArrayList](https://github.com/prajun7/aha-moments#arraylist)<br>
+  > [Linked List](https://github.com/prajun7/aha-moments#linked-list)<br>
+
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1. 
 
@@ -73,7 +77,7 @@
   > And import the correct package:
 `import java.util.Arrays;`
  
-#### Linked List Implementation:
+#### Linked List:
 - Initiate a Linked List
 ```sh
 LinkedList<String> cars = new LinkedList<String>();
