@@ -76,6 +76,23 @@
   ```
   > And import the correct package:
 `import java.util.Arrays;`
+
+  - Convert ArrayList to array
+  ```
+  // Creating an empty ArrayList of string type
+  ArrayList<String> al = new ArrayList<String>();
+
+  // Populating the ArrayList by custom elements
+  al.add("Mike Tyson");
+  al.add("Chuck Norris");
+  al.add("Roronoa Zoro");
+  al.add("Yagami Light");
+
+  // Converting above List to array using toArray()
+  // method and storing it in an string array
+  String k[] = al.toArray(new String[al.size()]);
+  ```
+  > We need to pass in the size of ArrayList to the array.
  
 #### LinkedList
 - Initiate a LinkedList
