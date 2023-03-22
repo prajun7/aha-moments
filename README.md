@@ -2,7 +2,7 @@
 
   > [Array](https://github.com/prajun7/aha-moments#array)<br>
   > [ArrayList](https://github.com/prajun7/aha-moments#arraylist)<br>
-  > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br>
+  > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br> 
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
