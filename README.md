@@ -13,6 +13,7 @@
     int[] intArray = new int[20];
   ```
   
+  
   - In a situation where the size of the array and variables of the array are already known, array literals can be used: 
   ```sh
     int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
