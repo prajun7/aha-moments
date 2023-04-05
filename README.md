@@ -35,6 +35,13 @@
   }
   ```
   
+  - For Each
+  ```sh
+   for (int value : intArray) {
+    System.out.println(value);
+   }
+  ```
+  
   #### ArrayList
   `import java.util.ArrayList;`
   
