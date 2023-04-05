@@ -19,6 +19,8 @@
     int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
   ```
   
+  
+  
   - Get length of the array by using `length`:
   ```sh
     string[] strArray = new string[]{ "one", "two", "three", "four", "five", "six", "seven" };
