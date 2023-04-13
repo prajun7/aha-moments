@@ -167,20 +167,367 @@ ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
   - In Ember the page doesn't rerender like it does in React.
 
 
-# ------------------------------------------------------------------------------------------------------------------------------
+
+### Collection Framework
+
+- Convert an ArrayList to Array
+  ```sh
+  List<Integer> list = new ArrayList<>();
+  int[] arr = list.toarray(new int(list.size());
+  ```
+  
+- Convert Array to an ArrayList
+```sh
+  Int[] arr = new int[5];
+  List<Integer> list = new ArrayList(Arrays.asList(arr));
+```
+
+- Iterate through all elements in an array list using Iterator
+```sh
+  Iterator<Integer> iterator = list.iterator();
+  while(iterator.hasNext()){
+	  Integer key = iterator.next();
+	  sysout(key);
+}
+```
+
+- Extract a portion of an array list
+```sh
+  List<Integer> portion = list.subList(start,end+1);
+```
+
+- Join two array lists
+```sh
+  list1.addAll(list2)
+  //OR
+  for(int e : list2)
+	  list1.add(e)
+```
+
+- Trim the capacity of an array list to the current list size
+```sh
+  list.trimToSize();
+```
+
+- Difference between arraylist and linkedlist
+```sh
+  ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
+```
+
+- Iterate through all elements in a linked list using for each remaining
+```sh
+  Iterator<String> iterator = list.iterator();
+  iterator.forEachRemaining(System:out::println);
+```
+
+- Swap two elements in a linked list
+```sh
+    List<String> list = new LinkedList<>();
+    list.add("Apple");
+    list.add("Banana");
+    list.add("Orange");
+    list.add("Mango");
+
+    String temp = list.get(1);
+    list.set(1, list.get(3));
+    list.set(3, temp);
+
+    System.out.println(list);
+```
+
+- Clone an linked list to another linked list
+```sh
+    LinkedList<String> list2 = (LinkedList<String>) list1.clone();
+```
+
+- Iterate through all elements in a hash list
+```sh
+    Set<String> set = new HashSet<String>(); 
+    for (String s : set) {
+       System.out.println(s); 
+    }
+    //OR
+    set.add("apple");
+    set.add("banana");
+    set.add("cherry");
+
+    Iterator<String> itr = set.iterator();
+    while (itr.hasNext()) {
+      System.out.println(itr.next());
+```
+
+- Clone a hash set to another hash set
+```sh
+   HashSet<String> set1 = HashSet<>();
+   HashSet<String> set2 = (HashSet<>) set1.clone();
+```
+
+- Convert a hash set to an array
+```sh
+    HashSet<String> set = new HashSet<>();
+    set.add("apple");
+    set.add("banana");
+    set.add("cherry");
+
+    String[] array = set.toArray(new String[set.size()]);
+    System.out.println(Arrays.toString(array)); 
+
+```
+
+- Create a reverse order view of the elements contained in a given Tree Set
+    TreeSet<String> set = new TreeSet<>();
+    set.add("red");
+    set.add("orange");
+    set.add("yellow");
+    set.add("green");
+    NavigableSet<String> reverseSet = set.descendingSet();
+    System.out.println("Reverse set: " + reverseSet);
+    
+- Find the numbers less than 7 in a Tree Set
+```sh
+    TreeSet<Integer> set = new TreeSet<>();
+    set.add(1);
+    set.add(3);
+    set.add(5);
+    set.add(7);
+    set.add(9);
+
+
+    TreeSet<Integer>lessThanSeven = (TreeSet<Integer>) set.headSet(7);
+    System.out.println("Numbers less than 7: " + lessThanSeven);
+```
+
+- Get the element in a tree set which is greater than or equal to the given element
+```sh
+    Integer great = set.ceiling(4);
+```
+
+- Get the element in a tree set which is less than or equal to the given element
+```sh
+    Integer great = set.floor(3);
+```
+
+- Get the element in a tree set which is strictly greater than or equal to the given element
+```sh
+    Integer strictlyGreat = set.higher(3);
+```
+
+- Get an element in a tree set which is strictly less than the given element
+```sh
+    Integer strictlyless = set.lower(5);
+```
+
+- Convert a priority queue to an array containing all of the elements of the queue
+``` sh
+    String[] arr = queue.toArray(new String[queue.size()]);
+```
+
+- Sort keys in Treemap by using a comparator
+```sh 
+    TreeMap<String,Integer>map=newTreeMap<>(new Comparator<String>() {
+      @Override
+      public int compare(String s1, String s2) {
+        return s2.compareTo(s1);
+      }
+    });
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("C", 3);
+    map.put("D", 4);
+
+    System.out.println("TreeMap with sorted keys: " + map);
+// TreeMap with sorted keys: {D=4, C=3, B=2, A=1}
+
+```
+
+- Get a key-value mapping associated with the greatest key and the least key in a map
+```sh
+          TreeMap<String, Integer> map = new TreeMap<>();
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("C", 3);
+    map.put("D", 4);
+
+    System.out.println("Original TreeMap: " + map);
+    System.out.println("Mapping for greatest key: " + map.lastEntry());
+    System.out.println("Mapping for least key: " + map.firstEntry());
+    
+    // Original TreeMap: {A=1, B=2, C=3, D=4}
+    // Mapping for greatest key: D=4
+    // Mapping for least key: A=1
+```
+
+- Get the first (lowest) key and the last (highest) key currently in a map
+```sh
+     TreeMap<String, Integer> map = new TreeMap<>();
+     map.put("A", 1);
+     map.put("B", 2);
+     map.put("C", 3);
+     map.put("D", 4);
+
+    System.out.println("Original TreeMap: " + map);
+    System.out.println("First (lowest) key: " + map.firstKey());
+    System.out.println("Last (highest) key: " + map.lastKey());
+    
+    // Original TreeMap: {A=1, B=2, C=3, D=4}
+    // First (lowest) key: A
+    // Last (highest) key: D
+```
+
+- Get a reverse order view of the keys contained in a given map 
+```sh
+    TreeMap<String, Integer> map = new TreeMap<>();
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("C", 3);
+    map.put("D", 4);
+
+    NavigableMap<String,Integer>reverseMap = map.descendingMap();
+    System.out.println("Original TreeMap: " + map);
+    System.out.println("Reverse order view of keys: " + reverseMap);
+    // Original TreeMap: {A=1, B=2, C=3, D=4}
+    // Reverse order view of keys: {D=4, C=3, B=2, A=1}
+
+```
+
+- Get a key-value mapping associated with the greatest key less than or equal to the given key
+```sh
+     TreeMap<String, Integer> map = new TreeMap<>();
+     map.put("A", 1);
+     map.put("B", 2);
+      map.put("C", 3);
+    map.put("D", 4);
+
+    System.out.println("Original TreeMap: " + map);
+    System.out.println("Mapping for greatest key less than or equal to 'C': " + map.floorEntry("C"));
+    // Original TreeMap: {A=1, B=2, C=3, D=4}
+    // Mapping for greatest key less than or equal to 'C': C=3
+ ```
+ 
+ - get the greatest key less than or equal to the given key
+ ```sh
+    TreeMap<String, Integer> map = new TreeMap<>();
+    map.put("A", 1);
+    map.put("B", 2);
+    map.put("D", 3);
+    map.put("E", 4);
+
+    System.out.println("Original TreeMap: " + map);
+    System.out.println("Greatest key less than or equal to 'C': " + map.floorKey("C"));
+    // Original TreeMap: {A=1, B=2, D=3, E=4}
+    // Greatest key less than or equal to 'C': B
+
+ ```
+ 
+ - Get the portion of a map whose keys are strictly less than a given key
+ ```sh
+      TreeMap<String, Integer> map = new TreeMap<>();
+      map.put("A", 1);
+      map.put("B", 2);
+      map.put("C", 3);
+      map.put("D", 4);
+
+      System.out.println("Original TreeMap: " + map);
+      NavigableMap<String, Integer> subMap = map.headMap("C", false);
+      System.out.println("Submap with keys strictly less than 'C': " + subMap);
+      // Original TreeMap: {A=1, B=2, C=3, D=4}
+      // Submap with keys strictly less than 'C': {A=1, B=2}
+```
+
+- Get the portion of this map whose keys are less than (or equal to, if inclusive is true) a given key
+```sh
+      TreeMap<String, Integer> map = new TreeMap<>();
+      map.put("A", 1);
+      map.put("B", 2);
+      map.put("C", 3);
+      map.put("D", 4);
+
+      System.out.println("Original TreeMap: " + map);
+      NavigableMap<String, Integer> subMap = map.headMap("C", true);
+      System.out.println("Submap with keys less than or equal to 'C': " + subMap);
+      // Original TreeMap: {A=1, B=2, C=3, D=4}
+      // Submap with keys less than or equal to 'C': {A=1, B=2, C=3}
+```
+
+- Get the least key strictly greater than the given keyReturn null if there is no such key
+```sh
+      TreeMap<String, Integer> map = new TreeMap<>();
+      map.put("A", 1);
+      map.put("B", 2);
+      map.put("C", 3);
+      map.put("D", 4);
+
+      System.out.println("Original TreeMap: " + map);
+      System.out.println("Least key strictly greater than 'C': " + map.higherKey("C"));
+      // Original TreeMap: {A=1, B=2, C=3, D=4}
+      // Least key strictly greater than 'C': D
+  ```
+  
+  - Get a key-value mapping associated with the greatest key strictly less than the given keyReturn null if there is no such key
+  ```sh 
+      TreeMap<String, Integer> map = new TreeMap<>();
+      map.put("A", 1);
+      map.put("B", 2);
+      map.put("C", 3);
+      map.put("D", 4);
+
+      System.out.println("Original TreeMap: " + map);
+      System.out.println("Mapping for greatest key strictly less than 'C': " + map.lowerEntry("C"));
+      // Original TreeMap: {A=1, B=2, C=3, D=4}
+      // Mapping for greatest key strictly less than 'C': B=2
+```
+ - Get the greatest key strictly less than the given keyReturn null if there is no such key
+ ```sh
+      TreeMap<String, Integer> map = new TreeMap<>();
+      map.put("A", 1);
+      map.put("B", 2);
+      map.put("C", 3);
+      map.put("D", 4);
+
+      System.out.println("Original TreeMap: " + map);
+      System.out.println("Greatest key strictly less than 'C': " + map.lowerKey("C"));
+      // Original TreeMap: {A=1, B=2, C=3, D=4}
+      // Greatest key strictly less than 'C': B
+ ```
+
+- Get a NavigableSet view of the keys contained in a map
+```sh
+      TreeMap<String, Integer> map = new TreeMap<>();
+      NavigableSet<String> keys = map.navigableKeySet();
+```
+
+- Get the portion of a map whose keys range from a given key (inclusive), to another key (exclusive)
+```sh
+      SortedMap<String, Integer> subMap = map.subMap("B", "E");
+```
+
+- Get the portion of a map whose keys range from a given key to another key
+```sh
+      SortedMap<String, Integer> subMap = map.subMap("B", true, "E", true);
+```
+
+- Get a portion of a map whose keys are greater than or equal to a given key
+```sh
+      SortedMap<String, Integer> subMap = map.tailMap("C");
+```
+
+- Get a portion of a map whose keys are greater than to a given key
+```sh
+      SortedMap<String, Integer> subMap = map.tailMap("C", false);
+```
+
+- Get a key-value mapping associated with the least key greater than or equal to the given key. Return null if there is no such key
+```sh
+      Entry<String, Integer> entry = map.ceilingEntry("C");
+```
+
+- Get the least key greater than or equal to the given key. Returns null if there is no such key
+```sh
+      String key = map.ceilingKey("C");
+```
 
 
 
-
-
-HERE
-
-
-
-
-
-
-# ------------------------------------------------------------------------------------------------------------------------------
 
 # Dillinger
 ## _The Last Markdown Editor, Ever_
