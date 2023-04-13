@@ -103,6 +103,13 @@
   String k[] = al.toArray(new String[al.size()]);
   ```
   > We need to pass in the size of ArrayList to the array.
+
+  - Convert Array to ArrayList
+  ```
+  String[] strArray = new String[] {"house", "plane"};
+  List<String> list = new ArrayList(Arrays.asList(strArray));
+  
+  ```
  
 #### LinkedList
 - Initiate a LinkedList
@@ -160,10 +167,20 @@ ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
   - In Ember the page doesn't rerender like it does in React.
 
 
+# ------------------------------------------------------------------------------------------------------------------------------
 
 
 
-# --------------------------------------------------------------------------
+
+
+HERE
+
+
+
+
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
 
 # Dillinger
 ## _The Last Markdown Editor, Ever_
