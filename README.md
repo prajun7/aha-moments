@@ -103,105 +103,25 @@
   // method and storing it in an string array
   String k[] = al.toArray(new String[al.size()]);
   ```
-  > We need to pass in the size of ArrayList to the array.
-
-  - Convert Array to ArrayList
-  ```
-  String[] strArray = new String[] {"house", "plane"};
-  List<String> list = new ArrayList(Arrays.asList(strArray));
   
-  ```
- 
-### LinkedList
-- Initiate a LinkedList
-```sh
-LinkedList<String> cars = new LinkedList<String>();
-```
-
-
-
-
-
-### Queue Implementation
-
-
-### Stack Implementation
-
-
-### Structured query language (SQL)
-- Select all the rows from a table
-```sh
-SELECT * FROM table_name;
-```
->These will select all the rows from the given table. It will better to use WHERE clause or LIMIT,
-```sh
-SELECT * FROM stores WHERE store_id = 200;
-```
-```sh
-SELECT * FROM reports WHERE store_id = 200 LIMIT 10; 
-```
-
-- Alter table to add a column
-```sh
-ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_name' AFTER some_column_name; 
-```
-> That is, to add a settings to a  `stores` table we can add a column called `has_analytics` with default value of `0`, which represents `False`
-
-```sh
-ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
-```  
-  
-### JavaScript
- - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
- - Summary of the article
- > Javascript is a single threaded language. This means it has one call stack and one memory heap. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but at times that can be harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
- > 
- - TimeOut sort :)
- ```sh
- let arr = [100,5000,500,1090,3100, 2000];
-
-arr.forEach(item => {
-    setTimeout(() => console.log(item), item);
-})
- ```
- 
-### React.js
-  	- Using react.js with TypeScript and JavaScript
-  	- Using Material UI's component, [MUI](https://mui.com/)
-  	- Using [constate](https://github.com/diegohaz/constate) for the state management
-  	- In React we need to use useMemo to stop rerendering every time. 
-  	- Even if we change a value in the react, it would rerender all the components.
-  	- When we change a value, React rerenders all the components eventhough those components are not using that value.
-  	- So, it is little bit difficult to stop rerendering each time. 
-  
-  
-### ASP.NET
-	-
-
-### Ember.js
-  	- In Ember the page doesn't rerender like it does in React.
-  
-### Spring Boot
-	-
-
-
-
-
-### Collection Framework
-
-- Convert an ArrayList to Array
   ```sh
   List<Integer> list = new ArrayList<>();
   int[] arr = list.toarray(new int(list.size());
   ```
+  > We need to pass in the size of ArrayList to the array.
+
+  - Convert Array to ArrayList
+  ```sh
+  String[] strArray = new String[] {"house", "plane"};
+  List<String> list = new ArrayList(Arrays.asList(strArray));
+  ```
   
-- Convert Array to an ArrayList
-```sh
+  ```sh
   Int[] arr = new int[5];
   List<Integer> list = new ArrayList(Arrays.asList(arr));
-```
-
-- Iterate through all elements in an array list using Iterator
+  ```
+  
+  - Iterate through all elements in an array list using Iterator
 ```sh
   Iterator<Integer> iterator = list.iterator();
   while(iterator.hasNext()){
@@ -227,10 +147,11 @@ arr.forEach(item => {
 ```sh
   list.trimToSize();
 ```
-
-- Difference between arraylist and linkedlist
+ 
+### LinkedList
+- Initiate a LinkedList
 ```sh
-  ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
+LinkedList<String> cars = new LinkedList<String>();
 ```
 
 - Iterate through all elements in a linked list using for each remaining
@@ -259,7 +180,8 @@ arr.forEach(item => {
     LinkedList<String> list2 = (LinkedList<String>) list1.clone();
 ```
 
-- Iterate through all elements in a hash list
+### HashSet
+- Iterate through all elements in a hash set
 ```sh
     Set<String> set = new HashSet<String>(); 
     for (String s : set) {
@@ -293,6 +215,7 @@ arr.forEach(item => {
 
 ```
 
+### TreeSet
 - Create a reverse order view of the elements contained in a given Tree Set
     TreeSet<String> set = new TreeSet<>();
     set.add("red");
@@ -335,12 +258,9 @@ arr.forEach(item => {
 ```sh
     Integer strictlyless = set.lower(5);
 ```
+	
 
-- Convert a priority queue to an array containing all of the elements of the queue
-``` sh
-    String[] arr = queue.toArray(new String[queue.size()]);
-```
-
+### TreeMap	
 - Sort keys in Treemap by using a comparator
 ```sh 
     TreeMap<String,Integer>map=newTreeMap<>(new Comparator<String>() {
@@ -358,7 +278,7 @@ arr.forEach(item => {
 // TreeMap with sorted keys: {D=4, C=3, B=2, A=1}
 
 ```
-
+	
 - Get a key-value mapping associated with the greatest key and the least key in a map
 ```sh
           TreeMap<String, Integer> map = new TreeMap<>();
@@ -375,8 +295,8 @@ arr.forEach(item => {
     // Mapping for greatest key: D=4
     // Mapping for least key: A=1
 ```
-
-- Get the first (lowest) key and the last (highest) key currently in a map
+	
+	- Get the first (lowest) key and the last (highest) key currently in a map
 ```sh
      TreeMap<String, Integer> map = new TreeMap<>();
      map.put("A", 1);
@@ -515,35 +435,81 @@ arr.forEach(item => {
       NavigableSet<String> keys = map.navigableKeySet();
 ```
 
-- Get the portion of a map whose keys range from a given key (inclusive), to another key (exclusive)
-```sh
-      SortedMap<String, Integer> subMap = map.subMap("B", "E");
+
+### Queue	
+- Convert a priority queue to an array containing all of the elements of the queue
+``` sh
+    String[] arr = queue.toArray(new String[queue.size()]);
 ```
 
-- Get the portion of a map whose keys range from a given key to another key
+
+### Stack
+
+
+### Collection Framework differences
 ```sh
-      SortedMap<String, Integer> subMap = map.subMap("B", true, "E", true);
+  ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
 ```
 
-- Get a portion of a map whose keys are greater than or equal to a given key
+
+### Structured query language (SQL)
+- Select all the rows from a table
 ```sh
-      SortedMap<String, Integer> subMap = map.tailMap("C");
+SELECT * FROM table_name;
+```
+>These will select all the rows from the given table. It will better to use WHERE clause or LIMIT,
+```sh
+SELECT * FROM stores WHERE store_id = 200;
+```
+```sh
+SELECT * FROM reports WHERE store_id = 200 LIMIT 10; 
 ```
 
-- Get a portion of a map whose keys are greater than to a given key
+- Alter table to add a column
 ```sh
-      SortedMap<String, Integer> subMap = map.tailMap("C", false);
+ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_name' AFTER some_column_name; 
 ```
+> That is, to add a settings to a  `stores` table we can add a column called `has_analytics` with default value of `0`, which represents `False`
 
-- Get a key-value mapping associated with the least key greater than or equal to the given key. Return null if there is no such key
 ```sh
-      Entry<String, Integer> entry = map.ceilingEntry("C");
-```
+ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
+```  
+  
+### JavaScript
+ - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
+ - Summary of the article
+ > Javascript is a single threaded language. This means it has one call stack and one memory heap. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but at times that can be harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
+ > 
+ - TimeOut sort :)
+ ```sh
+ let arr = [100,5000,500,1090,3100, 2000];
 
-- Get the least key greater than or equal to the given key. Returns null if there is no such key
-```sh
-      String key = map.ceilingKey("C");
-```
+arr.forEach(item => {
+    setTimeout(() => console.log(item), item);
+})
+ ```
+ 
+### React.js
+  	- Using react.js with TypeScript and JavaScript
+  	- Using Material UI's component, [MUI](https://mui.com/)
+  	- Using [constate](https://github.com/diegohaz/constate) for the state management
+  	- In React we need to use useMemo to stop rerendering every time. 
+  	- Even if we change a value in the react, it would rerender all the components.
+  	- When we change a value, React rerenders all the components eventhough those components are not using that value.
+  	- So, it is little bit difficult to stop rerendering each time. 
+  
+  
+### ASP.NET
+	-
+
+### Ember.js
+  	- In Ember the page doesn't rerender like it does in React.
+  
+### Spring Boot
+	-
+
+
+
 
 
 
