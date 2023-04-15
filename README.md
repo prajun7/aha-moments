@@ -149,26 +149,9 @@ ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_n
 
 ```sh
 ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
-```
-
-### We are using React.js for the frontend and ASP.NET for the backend.
-#### React.js
-  - Using react.js with TypeScript and JavaScript
-  - Using Material UI's component, [MUI](https://mui.com/)
-  - Using [constate](https://github.com/diegohaz/constate) for the state management
+```  
   
-  - In React we need to use useMemo to stop rerendering every time. 
-  - Even if we change a value in the react, it would rerender all the components.
-  - When we change a value, React rerenders all the components eventhough those components are not using that value.
-  - So, it is little bit difficult to stop rerendering each time. 
-
-
-### We are using Ember.js for the frontend and spring boot for the backend.
-#### Ember.js
-  - In Ember the page doesn't rerender like it does in React.
-  
-  
-#### JavaScript
+### JavaScript
  - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
  - Summary of the article
  > Javascript is a single threaded language. This means it has one call stack and one memory heap. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but at times that can be harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
@@ -181,6 +164,26 @@ arr.forEach(item => {
     setTimeout(() => console.log(item), item);
 })
  ```
+ 
+### React.js
+  	- Using react.js with TypeScript and JavaScript
+  	- Using Material UI's component, [MUI](https://mui.com/)
+  	- Using [constate](https://github.com/diegohaz/constate) for the state management
+  	- In React we need to use useMemo to stop rerendering every time. 
+  	- Even if we change a value in the react, it would rerender all the components.
+  	- When we change a value, React rerenders all the components eventhough those components are not using that value.
+  	- So, it is little bit difficult to stop rerendering each time. 
+  
+  
+### ASP.NET
+	-
+
+### Ember.js
+  	- In Ember the page doesn't rerender like it does in React.
+  
+### Spring Boot
+	-
+
 
 
 
