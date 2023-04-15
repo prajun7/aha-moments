@@ -3,11 +3,12 @@
   > [Array](https://github.com/prajun7/aha-moments#array)<br>
   > [ArrayList](https://github.com/prajun7/aha-moments#arraylist)<br>
   > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br> 
+  > [JavaScript](https://github.com/prajun7/aha-moments#javascript)<br>
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
   
-#### Array 
+### Array 
   - Initiating array of size 20: 
   ```sh
     int[] intArray = new int[20];
@@ -111,7 +112,7 @@
   
   ```
  
-#### LinkedList
+### LinkedList
 - Initiate a LinkedList
 ```sh
 LinkedList<String> cars = new LinkedList<String>();
@@ -121,13 +122,13 @@ LinkedList<String> cars = new LinkedList<String>();
 
 
 
-#### Queue Implementation
+### Queue Implementation
 
 
-#### Stack Implementation
+### Stack Implementation
 
 
-#### Structured query language (SQL)
+### Structured query language (SQL)
 - Select all the rows from a table
 ```sh
 SELECT * FROM table_name;
@@ -165,6 +166,21 @@ ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
 ### We are using Ember.js for the frontend and spring boot for the backend.
 #### Ember.js
   - In Ember the page doesn't rerender like it does in React.
+  
+  
+#### JavaScript
+ - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
+ - Summary of the article
+ > Javascript is a single threaded language. This means it has one call stack and one memory heap. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but at times that can be harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
+ > 
+ - TimeOut sort :)
+ ```sh
+ let arr = [100,5000,500,1090,3100, 2000];
+
+arr.forEach(item => {
+    setTimeout(() => console.log(item), item);
+})
+ ```
 
 
 
