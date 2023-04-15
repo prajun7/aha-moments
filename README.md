@@ -5,7 +5,7 @@
   > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br> 
   > [HashSet](https://github.com/prajun7/aha-moments#hashset)<br>
   > [TreeSet](https://github.com/prajun7/aha-moments#treeset)<br>
-  > [HashMap]
+  > [HashMap](https://github.com/prajun7/aha-moments#hashmap)<br>
   > [TreeMap](https://github.com/prajun7/aha-moments#treemap)<br>
   > [Queue](https://github.com/prajun7/aha-moments#queue)<br>
   > [Stack](https://github.com/prajun7/aha-moments#stack)<br>
