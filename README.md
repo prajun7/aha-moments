@@ -8,7 +8,7 @@
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
   
-### Array 
+## Array 
   - Initiating array of size 20: 
   ```sh
     int[] intArray = new int[20];
@@ -43,10 +43,8 @@
    }
   ```
   
-  #### ArrayList
+  ## ArrayList
   `import java.util.ArrayList;`
-  
-
   
   > We cannot specify int as the type of an ArrayList. 
  An int is not a "ReferenceType." 
@@ -180,7 +178,7 @@ LinkedList<String> cars = new LinkedList<String>();
     LinkedList<String> list2 = (LinkedList<String>) list1.clone();
 ```
 
-### HashSet
+## HashSet
 - Iterate through all elements in a hash set
 ```sh
     Set<String> set = new HashSet<String>(); 
@@ -215,7 +213,7 @@ LinkedList<String> cars = new LinkedList<String>();
 
 ```
 
-### TreeSet
+## TreeSet
 - Create a reverse order view of the elements contained in a given Tree Set
     TreeSet<String> set = new TreeSet<>();
     set.add("red");
@@ -436,23 +434,18 @@ LinkedList<String> cars = new LinkedList<String>();
 ```
 
 
-### Queue	
+## Queue	
 - Convert a priority queue to an array containing all of the elements of the queue
 ``` sh
     String[] arr = queue.toArray(new String[queue.size()]);
 ```
 
 
-### Stack
+## Stack
+ -
 
 
-### Collection Framework differences
-```sh
-  ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
-```
-
-
-### Structured query language (SQL)
+## Structured query language (SQL)
 - Select all the rows from a table
 ```sh
 SELECT * FROM table_name;
@@ -475,7 +468,7 @@ ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_n
 ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
 ```  
   
-### JavaScript
+## JavaScript
  - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
  - Summary of the article
  > Javascript is a single threaded language. This means it has one call stack and one memory heap. As expected, it executes code in order and must finish executing a piece code before moving onto the next. It's synchronous, but at times that can be harmful. For example, if a function takes awhile to execute or has to wait on something, it freezes everything up in the meanwhile.
@@ -489,7 +482,7 @@ arr.forEach(item => {
 })
  ```
  
-### React.js
+## React.js
   	- Using react.js with TypeScript and JavaScript
   	- Using Material UI's component, [MUI](https://mui.com/)
   	- Using [constate](https://github.com/diegohaz/constate) for the state management
@@ -499,15 +492,19 @@ arr.forEach(item => {
   	- So, it is little bit difficult to stop rerendering each time. 
   
   
-### ASP.NET
+## ASP.NET
 	-
 
-### Ember.js
+## Ember.js
   	- In Ember the page doesn't rerender like it does in React.
   
-### Spring Boot
+## Spring Boot
 	-
 
+## Collection Framework 
+```sh
+  ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
+```
 
 
 # To make table
