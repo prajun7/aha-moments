@@ -3,7 +3,19 @@
   > [Array](https://github.com/prajun7/aha-moments#array)<br>
   > [ArrayList](https://github.com/prajun7/aha-moments#arraylist)<br>
   > [Linked List](https://github.com/prajun7/aha-moments#linkedlist)<br> 
+  > [HashSet](https://github.com/prajun7/aha-moments#hashset)<br>
+  > [TreeSet](https://github.com/prajun7/aha-moments#treeset)<br>
+  > [HashMap]
+  > [TreeMap](https://github.com/prajun7/aha-moments#treemap)<br>
+  > [Queue](https://github.com/prajun7/aha-moments#queue)<br>
+  > [Stack](https://github.com/prajun7/aha-moments#stack)<br>
+  > [SQL](https://github.com/prajun7/aha-moments#structured-query-language-sql)<br>
   > [JavaScript](https://github.com/prajun7/aha-moments#javascript)<br>
+  > [React.js](https://github.com/prajun7/aha-moments#reactjs)<br>
+  > [ASP.NET](https://github.com/prajun7/aha-moments#aspnet)<br>
+  > [Ember.js](https://github.com/prajun7/aha-moments#emberjs)<br>
+  > [Spring Boot](https://github.com/prajun7/aha-moments#spring-boot)<br>
+  > [Collection Framework](https://github.com/prajun7/aha-moments#collection-framework)<br>
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
@@ -146,7 +158,7 @@
   list.trimToSize();
 ```
  
-### LinkedList
+## LinkedList
 - Initiate a LinkedList
 ```sh
 LinkedList<String> cars = new LinkedList<String>();
@@ -257,8 +269,10 @@ LinkedList<String> cars = new LinkedList<String>();
     Integer strictlyless = set.lower(5);
 ```
 	
+## HashMap
+- 
 
-### TreeMap	
+## TreeMap	
 - Sort keys in Treemap by using a comparator
 ```sh 
     TreeMap<String,Integer>map=newTreeMap<>(new Comparator<String>() {
