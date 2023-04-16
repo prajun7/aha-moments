@@ -651,7 +651,177 @@ fetch('https://example.com/api/data')
 >In this example, we use parseInt() to convert the string representation of the integer back into an actual integer value, and we simply access the string value as a string.
 
 > So, in summary: while data is typically serialized into a text-based format like JSON when sending data from a backend to a frontend, you can still send and receive data of various types, including integers, booleans, strings, arrays, and objects. While the data will be represented as strings during transmission, you can easily convert the string representation back into the original data type using appropriate JavaScript methods on the frontend.
-	
+
+#### Different ways to send data from backend to frontend
+- Response body
+> The backend can send data as the response body of a HTTP response. This is the most common way to send data from the backend to the frontend.
+```sh
+@GetMapping("/books/{id}")
+public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+    Book book = bookService.getBookById(id);
+    return ResponseEntity.ok(book);
+}
+```
+> In this example, the backend sends a Book object as the response body.
+```sh
+fetch('/books/123')
+    .then(response => response.json())
+    .then(book => {
+        // do something with book object
+    });
+```
+> In this example, the frontend fetches the book with ID 123 from the backend and receives a `Book` object as the response body.
+
+- Headers
+> The backend can send data in HTTP response headers. This is less common than sending data in the response body, but can be useful in certain situations.
+```sh
+@GetMapping("/books/{id}")
+public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+    Book book = bookService.getBookById(id);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("X-Book-Id", id.toString());
+    return ResponseEntity.ok()
+            .headers(headers)
+            .body(book);
+}
+```
+> In this example, the backend sends the book ID as a custom header called "X-Book-Id".
+```sh
+fetch('/books/123')
+    .then(response => {
+        const bookId = response.headers.get('X-Book-Id');
+        return response.json();
+    })
+    .then(book => {
+        // do something with book object
+    });
+```
+> In this example, the frontend fetches the book with ID 123 from the backend and reads the book ID from the custom header.
+
+- Cookies
+> The backend can send data in cookies that are set in the HTTP response. Cookies are commonly used to store user session information.
+```sh
+@GetMapping("/books/{id}")
+public ResponseEntity<Book> getBookById(@PathVariable Long id, HttpServletResponse response) {
+    Book book = bookService.getBookById(id);
+    Cookie cookie = new Cookie("bookId", id.toString());
+    response.addCookie(cookie);
+    return ResponseEntity.ok(book);
+}
+```
+> In this example, the backend sends the book ID as a cookie called "bookId".
+```sh
+fetch('/books/123')
+    .then(response => response.json())
+    .then(book => {
+        const cookies = document.cookie;
+        const bookId = cookies.split(';').find(c => c.trim().startsWith('bookId='));
+        // do something with book object and bookId
+    });
+```
+> In this example, the frontend fetches the book with ID 123 from the backend and reads the book ID from the "bookId" cookie.
+
+- Websockets
+> The backend can use websockets to establish a two-way communication channel with the frontend. This allows the backend to send data to the frontend in real-time, without the frontend needing to send a request.
+```sh
+@MessageMapping("/books/{id}")
+@SendToUser("/queue/book/{id}")
+public Book getBookById(@PathVariable Long id) {
+    Book book = bookService.getBookById(id);
+    return book;
+}
+```
+> In this example, the backend sends the book as a message to the user who requested it, using a Spring Websocket @MessageMapping annotation.
+
+```sh
+const socket = new SockJS('/websocket');
+const stompClient = Stomp.over(socket);
+stompClient.connect({}, function(frame) {
+    stompClient.subscribe('/user/queue/book/123', function(message) {
+        const book = JSON.parse(message.body);
+        // do something with book object
+    });
+});
+```
+> In this example, the frontend establishes a Websocket connection with the backend, subscribes to the book with ID 123, and receives the book object as a message.
+
+
+- Server-Sent Events (SSE)
+> Similar to websockets, SSE allows the backend to send data to the frontend in real-time, but without the need for a two-way communication channel. The backend simply sends events to the frontend, which can be processed by an event listener.
+```sh
+@RestController
+public class MyRestController {
+    @GetMapping(value = "/my-server-sent-events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> myServerSentEvents() {
+        return Flux.interval(Duration.ofSeconds(1))
+                   .map(i -> "Hello from the server at " + LocalTime.now());
+    }
+}
+```
+```sh
+const eventSource = new EventSource("http://localhost:8080/my-server-sent-events");
+
+eventSource.onmessage = function(event) {
+    const receivedMessage = event.data;
+    // Process the received message
+    console.log("Received message from server: " + receivedMessage);
+};
+```
+> In this example, we define a REST endpoint on the backend that returns a stream of text event data using the MediaType.TEXT_EVENT_STREAM_VALUE value for the produces attribute. This REST endpoint uses a Flux to emit a message every second.
+
+> On the frontend, we create a new EventSource object and connect to the backend's REST endpoint using the EventSource constructor. We then define an event listener for incoming messages. When a message is received, we can process it as needed.
+
+> Note that Server-Sent Events are a one-way communication protocol, which means that the backend can send messages to the frontend, but the frontend cannot send messages back to the backend using this protocol.
+
+- Push notifications
+> The backend can send push notifications to the frontend, which are displayed as notifications on the user's device or browser. This is often used for real-time updates or alerts.
+```sh
+@RestController
+public class MyRestController {
+    private final FirebaseMessaging firebaseMessaging;
+
+    public MyRestController(FirebaseMessaging firebaseMessaging) {
+        this.firebaseMessaging = firebaseMessaging;
+    }
+
+    @PostMapping("/send-push-notification")
+    public void sendPushNotification(@RequestBody PushNotificationRequest request) throws FirebaseMessagingException {
+        Message message = Message.builder()
+                .setNotification(Notification.builder()
+                        .setTitle(request.getTitle())
+                        .setBody(request.getBody())
+                        .build())
+                .setToken(request.getDeviceToken())
+                .build();
+        firebaseMessaging.send(message);
+    }
+}
+```
+```sh
+const messaging = firebase.messaging();
+messaging.requestPermission().then(() => {
+    console.log("Notification permission granted.");
+
+    messaging.getToken().then((token) => {
+        console.log("Device token:", token);
+        // Send the device token to the backend
+        sendDeviceTokenToBackend(token);
+    }).catch((err) => {
+        console.log("Error getting device token:", err);
+    });
+}).catch((err) => {
+    console.log("Error requesting notification permission:", err);
+});
+
+messaging.onMessage((payload) => {
+    console.log("Received message from server:", payload);
+    // Process the received message
+});
+```
+> In this example, we use Firebase Cloud Messaging (FCM) to send push notifications from the backend to the frontend. On the backend, we define a REST endpoint that accepts a `PushNotificationRequest` object as the request body. This object contains the title, body, and device token of the recipient device. We use the FCM `FirebaseMessaging` object to send a message to the specified device using the `send()` method.
+
+> On the frontend, we use the Firebase JavaScript SDK to request permission to receive push notifications and to retrieve the device token. We then send the device token to the backend so that it can send push notifications to this device in the future. When a push notification is received, the `messaging.onMessage()` event listener is triggered, and we can process the received message as needed.
+
 ## Frontend to Backend
 > To send data from a React.js frontend to a Spring Boot backend, you can use HTTP methods like POST, PUT, or DELETE. Typically, you would use a form or an AJAX request to send the data to the backend.
 
