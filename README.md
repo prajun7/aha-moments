@@ -651,6 +651,192 @@ fetch('https://example.com/api/data')
 >In this example, we use parseInt() to convert the string representation of the integer back into an actual integer value, and we simply access the string value as a string.
 
 > So, in summary: while data is typically serialized into a text-based format like JSON when sending data from a backend to a frontend, you can still send and receive data of various types, including integers, booleans, strings, arrays, and objects. While the data will be represented as strings during transmission, you can easily convert the string representation back into the original data type using appropriate JavaScript methods on the frontend.
+	
+## Frontend to Backend
+> To send data from a React.js frontend to a Spring Boot backend, you can use HTTP methods like POST, PUT, or DELETE. Typically, you would use a form or an AJAX request to send the data to the backend.
+
+> Here is an example of sending data from a React.js component using an AJAX request with fetch():
+```sh
+const data = { name: 'John Doe', age: 30 };
+
+fetch('https://example.com/api/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });	
+```
+> In this example, we are sending a POST request to the /api/users endpoint with some data in the request body. The JSON.stringify() method is used to convert the data object to a JSON string before sending it to the backend. The headers property is set to specify that we are sending JSON data in the request body.
+
+> On the Spring Boot backend, you can define an endpoint that handles the request and extracts the data from the request body as follows:
+	
+```sh 
+@PostMapping("/api/users")
+public ResponseEntity<User> createUser(@RequestBody User user) {
+    // Handle the user data here...
+    return ResponseEntity.ok(user);
+}
+```
+	
+> In this example, we define a POST endpoint /api/users in our Spring Boot backend that accepts a User object as the request body. Spring Boot will automatically deserialize the JSON data in the request body into a User object, which we can then use to create a new user in the backend. Finally, we return the User object in the response body.
+
+> Note that you will need to ensure that the `User` class implements the `Serializable` interface in order for Spring Boot to properly deserialize the JSON data in the request body into a `User` object. Also, make sure to handle any validation or error scenarios appropriately in your backend code.
+	
+#### JSON.stringify(data)
+> In order to send data from a frontend application to a backend API, the data needs to be in a format that can be transmitted over the network. One common format for sending data over the web is JSON (JavaScript Object Notation), which is a text-based data format that is easy to read and write.
+
+> However, in order to send data as JSON, it needs to be converted from a JavaScript object into a JSON string. This is where the JSON.stringify() method comes in.
+
+> The JSON.stringify() method takes a JavaScript object and returns a JSON string representation of that object. This allows us to send the data to the backend in a format that can be easily parsed and understood.
+
+> For example, let's say we have a JavaScript object like this:
+```sh
+const data = { name: 'John', age: 30 };
+```
+	
+> If we want to send this data to the backend API as JSON, we can use JSON.stringify() to convert it to a JSON string:
+```sh
+const jsonData = JSON.stringify(data);	
+```
+> This will result in a JSON string that looks like this:
+```sh
+{"name":"John","age":30}
+```
+> We can then send this JSON string to the backend API using an AJAX request, and the backend can parse the JSON data and use it as needed.
+
+> In summary, we use JSON.stringify() to convert JavaScript objects to JSON strings so that we can send the data over the network to the backend API.
+	
+#### Different ways to send data from frontend to backend
+- Query Parameters
+> Query parameters are the key-value pairs that are appended to the end of a URL. They are typically used for GET requests and can be easily accessed on the backend using a request object. However, query parameters are limited in size and may not be the best option for sending large amounts of data.
+```sh
+const name = "John";
+const age = 25;
+fetch(`/user?name=${name}&age=${age}`)
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+```sh
+@GetMapping("/user")
+public User getUser(@RequestParam String name, @RequestParam int age) {
+  User user = new User(name, age);
+  return user;
+}
+```
+
+- Form Data
+> Form data is used for submitting data via a form. It is typically used for POST requests and can be accessed on the backend using a request object. Form data can be sent as key-value pairs or as a serialized string using the application/x-www-form-urlencoded content type.
+```sh
+const formData = new FormData();
+formData.append("name", "John");
+formData.append("age", 25);
+fetch('/user', {
+  method: 'POST',
+  body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+```sh
+@PostMapping("/user")
+public User createUser(@RequestParam String name, @RequestParam int age) {
+  User user = new User(name, age);
+  // code to create a new user
+  return user;
+}
+```
+	
+- JSON
+> JSON is a lightweight data interchange format that is commonly used for sending data between frontend and backend. JSON can be easily serialized and deserialized on both the frontend and backend, making it a popular choice for API communication.
+```sh
+const data = { name: "John", age: 25 };
+fetch('/user', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+```sh
+@PostMapping("/user")
+public User createUser(@RequestBody User user) {
+  // code to create a new user
+  return user;
+}
+```
+
+- File Uploads
+> When uploading files from the frontend to the backend, you can use the `multipart/form-data` content type to send the data as binary data. The backend can then parse the file data and save it to a database or file system.
+```sh
+const fileInput = document.querySelector('input[type="file"]');
+const formData = new FormData();
+formData.append("file", fileInput.files[0]);
+fetch('/upload', {
+  method: 'POST',
+  body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+```sh
+@PostMapping("/upload")
+public String handleFileUpload(@RequestParam("file") MultipartFile file) {
+  // code to handle file upload
+  return "File uploaded successfully!";
+}
+```
+	
+- WebSockets
+> WebSockets are a bidirectional communication protocol that allows for real-time communication between the frontend and backend. WebSockets can be used to send and receive data in real-time, making them a good option for applications that require real-time updates or notifications.
+```sh
+const socket = new WebSocket("ws://localhost:8080/chat");
+socket.addEventListener("open", event => {
+  socket.send("Hello, server!");
+});
+socket.addEventListener("message", event => {
+  console.log(`Received message: ${event.data}`);
+});
+```
+```sh
+@ServerEndpoint("/chat")
+public class ChatEndpoint {
+
+  @OnMessage
+  public void handleMessage(String message, Session session) throws IOException {
+    System.out.println("Received message: " + message);
+    session.getBasicRemote().sendText("Hello, client!");
+  }
+}
+```
+> Note that the backend example for WebSockets is using Java's built-in WebSocket support. Other languages and frameworks may have different ways of handling WebSockets.
+
+- URL parameters
+> Sending data via URL parameters or path variables, and it is commonly used to retrieve resources from the server by specifying their unique IDs.
+Here's an example of how you can retrieve a book with ID 3 using path variables:
+```sh
+fetch('/books/3')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+```sh
+@GetMapping("/books/{id}")
+public Book getBookById(@PathVariable Long id) {
+  // code to retrieve book by ID
+  return book;
+}
+```
+> In this example, the {id} in the URL is a path variable that tells Spring to pass the ID value from the URL to the getBookById() method. The value of id in the method signature will be automatically set to the value specified in the URL (in this case, 3).
 
 # To make table
 
