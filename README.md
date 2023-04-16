@@ -16,6 +16,9 @@
   > [Ember.js](https://github.com/prajun7/aha-moments#emberjs)<br>
   > [Spring Boot](https://github.com/prajun7/aha-moments#spring-boot)<br>
   > [Collection Framework](https://github.com/prajun7/aha-moments#collection-framework)<br>
+  
+  > [Backend => Frontend]
+  > [Frontend => Backend]
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
@@ -520,6 +523,134 @@ arr.forEach(item => {
   ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
 ```
 
+## Backend => Frontend
+> In Spring Boot, you can create RESTful APIs that can return data in various formats, such as JSON or XML.<br>
+> JSON is the most common format used for exchanging data between a Spring Boot backend and a React.js frontend.<br<
+
+> To pass data from a Spring Boot backend to a React.js frontend in JSON format, you can create a REST endpoint in Spring Boot that returns the data as a JSON object.
+> Here's an example of a Spring Boot controller method that returns a list of books in JSON format:
+```sh
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    @Autowired
+    private BookService bookService;
+
+    @GetMapping
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+}
+```
+> In this example, the @RestController annotation is used to define a REST endpoint for handling HTTP GET requests to the /books URL path. The getAllBooks() method returns a list of Book objects, which is automatically serialized into JSON format by Spring Boot.
+
+> On the React.js side, you can use the fetch() API or a third-party library like Axios or jQuery to make an HTTP GET request to the Spring Boot endpoint and retrieve the JSON data. Here's an example of how to use the fetch() API to get the list of books from the Spring Boot endpoint:
+```sh
+fetch('/books')
+  .then(response => response.json())
+  .then(data => {
+    // do something with the data
+  });
+```
+> In this example, the fetch() function sends an HTTP GET request to the /books URL path and receives a JSON response. The response.json() method is called to parse the JSON response into a JavaScript object, which can then be used in the data variable.
+
+- Serialization
+> Serialization is the process of converting an object into a format that can be easily transmitted over a network or stored in a file or database. In the case of sending data from a Spring Boot backend to a React.js frontend, serialization is necessary to convert the data into a format that can be transmitted as a response to an HTTP request.
+
+> Serialization is necessary because the data being transmitted needs to be in a format that can be easily understood and interpreted by both the backend and frontend applications. In the case of Spring Boot and React.js, the data is typically serialized into a JSON format, which is a lightweight and widely-used format for transmitting data over the web.
+
+> By serializing the data into a standardized format like JSON, it becomes possible for the backend and frontend applications to communicate with each other in a way that is platform and language independent. This means that the same data can be transmitted and interpreted by a wide variety of different systems and programming languages, which makes it much easier to build interoperable applications.
+
+> In summary, serialization is necessary to convert data into a standardized format that can be transmitted over the web and interpreted by different systems and programming languages. This is essential for building interoperable applications, like a Spring Boot backend and a React.js frontend.
+
+- Deserialization
+> Deserialization is the process of converting a serialized data format, such as JSON, back into an object that can be easily manipulated and understood by the application. In the case of a React.js frontend receiving data from a Spring Boot backend, the data is typically serialized as JSON by the backend and then deserialized by the frontend.
+
+> To deserialize data in React.js, you can use the built-in JSON.parse() method or a third-party library like axios or fetch-jsonp. Here's an example of how to use JSON.parse() to deserialize a JSON response from a Spring Boot backend:
+```sh
+fetch('/api/books')
+  .then(response => response.json())
+  .then(data => {
+    // parse the JSON data into a JavaScript object
+    const books = JSON.parse(data);
+
+    // do something with the deserialized data
+    console.log(books);
+  });
+```
+> In this example, the fetch() function is used to make an HTTP request to the Spring Boot backend and receive a JSON response. The response.json() method is called to convert the response into a JSON string, which can then be parsed using JSON.parse() into a JavaScript object. Once the data is deserialized, it can be manipulated and used in the React.js application as needed.
+
+> Alternatively, if you're using a third-party library like axios or fetch-jsonp, deserialization may be handled automatically by the library, depending on how it's configured. For example, with axios, you can set the responseType property to json to automatically deserialize JSON responses:
+```sh
+axios.get('/api/books', {
+  responseType: 'json'
+})
+  .then(response => {
+    // the data has already been deserialized into a JavaScript object
+    const books = response.data;
+
+    // do something with the deserialized data
+    console.log(books);
+  });
+
+```
+> In summary, deserialization is the process of converting a serialized data format, such as JSON, back into an object that can be easily manipulated and understood by the application. In React.js, you can use the built-in JSON.parse() method or a third-party library like axios or fetch-jsonp to deserialize JSON responses from a Spring Boot backend.
+
+- response.json()
+> The response.json() method in the frontend is used to extract the JSON data from an HTTP response that was received from a server. When you make an HTTP request using the fetch() method or a similar API, you receive a response object that contains information about the response, such as the status code and any headers. However, to access the actual JSON data that was returned by the server, you need to extract it from the response body.
+
+> The response.json() method is a built-in method in JavaScript's Response interface that extracts the JSON data from the response body and returns it as a JavaScript object. The method reads the response body and parses it as JSON, and then returns the resulting object.
+
+> Here's an example of how to use response.json() to extract JSON data from a response object:
+
+```sh
+fetch('https://example.com/api/data')
+  .then(response => response.json())
+  .then(data => {
+    // use the parsed JSON data here
+    console.log(data);
+  });
+```
+
+> In this example, we make an HTTP request to the https://example.com/api/data URL using the fetch() method. The then() method is used to handle the response once it is received. The response.json() method is called to extract the JSON data from the response body, and the resulting object is passed to the next then() method for further processing.
+
+> Using response.json() is important because it allows you to work with the JSON data in a JavaScript-friendly format, rather than having to parse it manually or work with it as a string. Once the JSON data has been parsed into a JavaScript object, you can easily manipulate and use it in your code.
+
+- String is boss
+> When sending data over the web from a backend to a frontend, the data is typically serialized into a text-based format like JSON. In JSON, all data is represented as strings, even if the original data was a number, boolean, or other type. This means that when you send an integer value from a backend to a frontend using JSON serialization, the integer value will be converted into a string representation of the number during the serialization process.
+
+> However, this does not mean that you can only pass data in the form of strings from a backend to a frontend. When the data is received on the frontend, you can easily convert the string representation of the data back into its original type using appropriate JavaScript methods like parseInt() or parseFloat() for numbers, JSON.parse() for JSON data, or other parsing methods for other data types.
+
+> For example, let's say you are sending a JSON object containing an integer value and a string value from a Spring Boot backend to a React.js frontend:
+```sh
+@GetMapping("/api/data")
+public ResponseEntity<Map<String, Object>> getData() {
+    Map<String, Object> data = new HashMap<>();
+    data.put("intValue", 42);
+    data.put("stringValue", "Hello, world!");
+    return ResponseEntity.ok(data);
+}
+```
+
+> In this example, we define a GET endpoint /api/data in our Spring Boot backend that returns a JSON object containing an integer value of 42 and a string value of "Hello, world!" as the response body.
+
+> On the React.js side, you can then use the response.json() method or a third-party library like axios or fetch-jsonp to extract the JSON data from the response. Once you have the JSON data, you can access the integer value and the string value as follows:
+
+```sh
+fetch('https://example.com/api/data')
+  .then(response => response.json())
+  .then(data => {
+    const intValue = parseInt(data.intValue); // Convert the string to an integer
+    const stringValue = data.stringValue; // No conversion necessary
+    console.log(intValue); // Outputs 42
+    console.log(stringValue); // Outputs "Hello, world!"
+  });
+```
+
+>In this example, we use parseInt() to convert the string representation of the integer back into an actual integer value, and we simply access the string value as a string.
+
+> So, in summary: while data is typically serialized into a text-based format like JSON when sending data from a backend to a frontend, you can still send and receive data of various types, including integers, booleans, strings, arrays, and objects. While the data will be represented as strings during transmission, you can easily convert the string representation back into the original data type using appropriate JavaScript methods on the frontend.
 
 # To make table
 
