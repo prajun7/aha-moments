@@ -597,7 +597,7 @@ axios.get('/api/books', {
 ```
 > In summary, deserialization is the process of converting a serialized data format, such as JSON, back into an object that can be easily manipulated and understood by the application. In React.js, you can use the built-in JSON.parse() method or a third-party library like axios or fetch-jsonp to deserialize JSON responses from a Spring Boot backend.
 
-- response.json()
+#### response.json()
 > The response.json() method in the frontend is used to extract the JSON data from an HTTP response that was received from a server. When you make an HTTP request using the fetch() method or a similar API, you receive a response object that contains information about the response, such as the status code and any headers. However, to access the actual JSON data that was returned by the server, you need to extract it from the response body.
 
 > The response.json() method is a built-in method in JavaScript's Response interface that extracts the JSON data from the response body and returns it as a JavaScript object. The method reads the response body and parses it as JSON, and then returns the resulting object.
@@ -616,6 +616,66 @@ fetch('https://example.com/api/data')
 > In this example, we make an HTTP request to the https://example.com/api/data URL using the fetch() method. The then() method is used to handle the response once it is received. The response.json() method is called to extract the JSON data from the response body, and the resulting object is passed to the next then() method for further processing.
 
 > Using response.json() is important because it allows you to work with the JSON data in a JavaScript-friendly format, rather than having to parse it manually or work with it as a string. Once the JSON data has been parsed into a JavaScript object, you can easily manipulate and use it in your code.
+
+#### JSON.parse()
+> Not all data sent from the backend to the frontend needs to be parsed using JSON.parse().
+
+> JSON (JavaScript Object Notation) is a commonly used format for sending data between the backend and frontend because it is lightweight, easy to read and write, and can be easily parsed by JavaScript.
+
+> If the data being sent is already in JSON format, it can be directly sent from the backend to the frontend and received in the frontend using fetch() or any other HTTP request library. The response from the backend will already be in JSON format, so it can be directly used in the frontend JavaScript code without the need for parsing it using JSON.parse().
+
+> However, if the data being sent is not in JSON format, such as plain text or binary data, then it cannot be directly used in the frontend JavaScript code. In this case, it needs to be transformed into a format that can be used by the frontend JavaScript code, such as parsing plain text data as a string, or using a binary parser to parse binary data.
+
+> Backend code using JSON format
+```sh
+@RestController
+public class BookController {
+
+    @GetMapping("/books")
+    public List<Book> getBooks() {
+        List<Book> books = new ArrayList<>();
+        // code to fetch books from database
+        return books;
+    }
+}
+```
+> Frontend code using fetch() and JSON.parse():
+```sh
+fetch('/books')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // data will be a parsed JSON object
+        // code to process data
+    })
+    .catch(error => console.error(error));
+```
+> Here's an example where you need to use JSON.parse() after using response.json():
+> Let's say the backend sends data to the frontend in JSON format like this:
+```sh
+{
+    "bookId": 1234,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald"
+}
+```
+> If you retrieve this data in the frontend using fetch() and response.json(), the response will be a JavaScript object. However, let's say you need to store this object as a string in local storage. To do this, you need to convert the object to a JSON string using JSON.stringify(). But when you retrieve the data from local storage, you will get a string, and you need to convert it back to a JavaScript object using JSON.parse():
+```sh
+// Get book data from backend
+fetch('/books/1234')
+    .then(response => response.json())
+    .then(data => {
+        const bookData = JSON.stringify(data);
+        localStorage.setItem('bookData', bookData);
+        // code to process book data
+    })
+    .catch(error => console.error(error));
+
+// Retrieve book data from local storage
+const bookData = localStorage.getItem('bookData');
+const book = JSON.parse(bookData);
+console.log(book.title); // output: "The Great Gatsby"
+```
+> Here, the response is first converted to a JavaScript object using response.json(). The object is then converted to a JSON string using JSON.stringify() and stored in local storage. When the data is retrieved from local storage using localStorage.getItem(), it is a string and needs to be converted back to a JavaScript object using JSON.parse().
 
 #### String is the Boss
 > When sending data over the web from a backend to a frontend, the data is typically serialized into a text-based format like JSON. In JSON, all data is represented as strings, even if the original data was a number, boolean, or other type. This means that when you send an integer value from a backend to a frontend using JSON serialization, the integer value will be converted into a string representation of the number during the serialization process.
@@ -720,6 +780,13 @@ fetch('/books/123')
     });
 ```
 > In this example, the frontend fetches the book with ID 123 from the backend and reads the book ID from the "bookId" cookie.
+> When retrieving data from cookies in the frontend, the document.cookie property returns a string containing all the cookies for the current domain. Each cookie in this string is separated by a semicolon followed by a space ("; ").
+
+> To extract a specific cookie value from this string, we need to split the string into an array of individual cookies using the semicolon and space as the separator. We can then use the Array.find() method to search for the cookie that we are interested in. However, the cookie name and value are usually separated by an equals sign ("=").
+
+> So we split the cookie string into an array of individual cookies using cookies.split(';'). Then, we use the Array.find() method with a callback function that checks if each cookie starts with the name of the cookie we are interested in (bookId). If a match is found, the find() method returns the matching cookie as a string.
+
+> We then use the String.trim() method to remove any leading or trailing whitespace from the cookie string, and the String.startsWith() method to check if the cookie starts with "bookId=". If this is true, we have found the cookie that we are interested in, and we can extract the value of the cookie by splitting the string again at the equals sign ("=") and taking the second element of the resulting array.
 
 - Websockets
 > The backend can use websockets to establish a two-way communication channel with the frontend. This allows the backend to send data to the frontend in real-time, without the frontend needing to send a request.
