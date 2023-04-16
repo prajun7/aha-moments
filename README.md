@@ -17,8 +17,8 @@
   > [Spring Boot](https://github.com/prajun7/aha-moments#spring-boot)<br>
   > [Collection Framework](https://github.com/prajun7/aha-moments#collection-framework)<br>
   
-  > [Backend => Frontend]
-  > [Frontend => Backend]
+  > [Backend to Frontend](https://github.com/prajun7/aha-moments#backend--frontend)<br>
+  > [Frontend to Backend](https://github.com/prajun7/aha-moments#backend--frontend)<br>
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
@@ -523,7 +523,7 @@ arr.forEach(item => {
   ArrayList has a faster access time for retrieving elements but slower insertion and deletion time, while LinkedList has faster insertion and deletion     time but slower access time.
 ```
 
-## Backend => Frontend
+## Backend to Frontend
 > In Spring Boot, you can create RESTful APIs that can return data in various formats, such as JSON or XML.<br>
 > JSON is the most common format used for exchanging data between a Spring Boot backend and a React.js frontend.<br<
 
@@ -555,7 +555,7 @@ fetch('/books')
 ```
 > In this example, the fetch() function sends an HTTP GET request to the /books URL path and receives a JSON response. The response.json() method is called to parse the JSON response into a JavaScript object, which can then be used in the data variable.
 
-- Serialization
+#### Serialization
 > Serialization is the process of converting an object into a format that can be easily transmitted over a network or stored in a file or database. In the case of sending data from a Spring Boot backend to a React.js frontend, serialization is necessary to convert the data into a format that can be transmitted as a response to an HTTP request.
 
 > Serialization is necessary because the data being transmitted needs to be in a format that can be easily understood and interpreted by both the backend and frontend applications. In the case of Spring Boot and React.js, the data is typically serialized into a JSON format, which is a lightweight and widely-used format for transmitting data over the web.
@@ -564,7 +564,7 @@ fetch('/books')
 
 > In summary, serialization is necessary to convert data into a standardized format that can be transmitted over the web and interpreted by different systems and programming languages. This is essential for building interoperable applications, like a Spring Boot backend and a React.js frontend.
 
-- Deserialization
+#### Deserialization
 > Deserialization is the process of converting a serialized data format, such as JSON, back into an object that can be easily manipulated and understood by the application. In the case of a React.js frontend receiving data from a Spring Boot backend, the data is typically serialized as JSON by the backend and then deserialized by the frontend.
 
 > To deserialize data in React.js, you can use the built-in JSON.parse() method or a third-party library like axios or fetch-jsonp. Here's an example of how to use JSON.parse() to deserialize a JSON response from a Spring Boot backend:
@@ -617,7 +617,7 @@ fetch('https://example.com/api/data')
 
 > Using response.json() is important because it allows you to work with the JSON data in a JavaScript-friendly format, rather than having to parse it manually or work with it as a string. Once the JSON data has been parsed into a JavaScript object, you can easily manipulate and use it in your code.
 
-- String is boss
+#### String is the Boss
 > When sending data over the web from a backend to a frontend, the data is typically serialized into a text-based format like JSON. In JSON, all data is represented as strings, even if the original data was a number, boolean, or other type. This means that when you send an integer value from a backend to a frontend using JSON serialization, the integer value will be converted into a string representation of the number during the serialization process.
 
 > However, this does not mean that you can only pass data in the form of strings from a backend to a frontend. When the data is received on the frontend, you can easily convert the string representation of the data back into its original type using appropriate JavaScript methods like parseInt() or parseFloat() for numbers, JSON.parse() for JSON data, or other parsing methods for other data types.
