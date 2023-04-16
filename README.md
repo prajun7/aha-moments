@@ -17,8 +17,8 @@
   > [Spring Boot](https://github.com/prajun7/aha-moments#spring-boot)<br>
   > [Collection Framework](https://github.com/prajun7/aha-moments#collection-framework)<br>
   
-  > [Backend to Frontend](https://github.com/prajun7/aha-moments#backend--frontend)<br>
-  > [Frontend to Backend](https://github.com/prajun7/aha-moments#backend--frontend)<br>
+  > [Backend to Frontend](https://github.com/prajun7/aha-moments#backend-to-frontend)<br>
+  > [Frontend to Backend](https://github.com/prajun7/aha-moments#backend-to-frontend)<br>
 
   - Indexing of array, arraylist starts from 0.
   - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
