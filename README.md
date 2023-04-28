@@ -1075,15 +1075,5 @@ public Book getBookById(@PathVariable Long id) {
 ```
 > In this example, the {id} in the URL is a path variable that tells Spring to pass the ID value from the URL to the getBookById() method. The value of id in the method signature will be automatically set to the value specified in the URL (in this case, 3).
 
-# To make table
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
 
 
