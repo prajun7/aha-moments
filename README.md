@@ -1074,6 +1074,3 @@ public Book getBookById(@PathVariable Long id) {
 }
 ```
 > In this example, the {id} in the URL is a path variable that tells Spring to pass the ID value from the URL to the getBookById() method. The value of id in the method signature will be automatically set to the value specified in the URL (in this case, 3).
-
-
-
