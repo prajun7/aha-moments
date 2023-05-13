@@ -21,7 +21,10 @@
   > [Frontend to Backend](https://github.com/prajun7/aha-moments#backend-to-frontend)<br>
 
   - Indexing of array, arraylist starts from 0.
-  - The length or the size of the array, arraylist, linkedlist, string starts with 1.     
+  - The length or the size of the array, arraylist, linkedlist, string starts with 1.   
+
+
+1 million = 1,000,000 i.e. 1_000_000
   
 ## Array 
   - Initiating array of size 20: 
