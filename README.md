@@ -479,6 +479,8 @@ SELECT * FROM reports WHERE store_id = 200 LIMIT 10;
 ```
 
 - Alter table to add a column
+> ALTER table is used to change the table, like add column, rename column, drop column ...
+	
 ```sh
 ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_name' AFTER some_column_name; 
 ```
@@ -487,6 +489,36 @@ ALTER TABLE table_name ADD column_name VARCHAR (255) NOT NULL DEFAULT 'default_n
 ```sh
 ALTER TABLE stores ADD has_analytics tinyint NOT NULL DEFAULT 0;
 ```  
+- Alter table to drop a column
+```sh
+ALTER TABLE table_name DROP COLUMN column_name;
+```
+	
+- Drop table
+```sh
+DROP TABLE table_name;
+```
+
+- UPDATE table to set column value
+> UPDATE is used to add data to the table at the specifc column when some condition matches.
+```sh
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+```
+```sh
+UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;	
+```
+
+- INSERT table
+> INSERT is used to add rows into the table.
+```sh
+INSERT INTO table_name (column1, column2, column3) VALUES (value1, value2, value3);
+```
+
+- DELETE table
+> DELETE is used to delete existing records in a table
+```sh
+DELETE FROM table_name WHERE condition;
+```
   
 ## JavaScript
  - Artcle about: [If Javascript Is Single Threaded, How Is It Asynchronous?](https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd)
