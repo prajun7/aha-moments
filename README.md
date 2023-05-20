@@ -35,13 +35,10 @@
     int[] intArray = new int[20];
   ```
   
-  
   - In a situation where the size of the array and variables of the array are already known, array literals can be used: 
   ```sh
     int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
   ```
-  
-  
   
   - Get length of the array by using `length`:
   ```sh
@@ -317,7 +314,7 @@ LinkedList<String> cars = new LinkedList<String>();
     // Mapping for least key: A=1
 ```
 	
-	- Get the first (lowest) key and the last (highest) key currently in a map
+- Get the first (lowest) key and the last (highest) key currently in a map
 ```sh
      TreeMap<String, Integer> map = new TreeMap<>();
      map.put("A", 1);
@@ -347,7 +344,6 @@ LinkedList<String> cars = new LinkedList<String>();
     System.out.println("Reverse order view of keys: " + reverseMap);
     // Original TreeMap: {A=1, B=2, C=3, D=4}
     // Reverse order view of keys: {D=4, C=3, B=2, A=1}
-
 ```
 
 - Get a key-value mapping associated with the greatest key less than or equal to the given key
@@ -376,7 +372,6 @@ LinkedList<String> cars = new LinkedList<String>();
     System.out.println("Greatest key less than or equal to 'C': " + map.floorKey("C"));
     // Original TreeMap: {A=1, B=2, D=3, E=4}
     // Greatest key less than or equal to 'C': B
-
  ```
  
  - Get the portion of a map whose keys are strictly less than a given key
@@ -436,6 +431,7 @@ LinkedList<String> cars = new LinkedList<String>();
       // Original TreeMap: {A=1, B=2, C=3, D=4}
       // Mapping for greatest key strictly less than 'C': B=2
 ```
+	
  - Get the greatest key strictly less than the given keyReturn null if there is no such key
  ```sh
       TreeMap<String, Integer> map = new TreeMap<>();
@@ -545,7 +541,6 @@ arr.forEach(item => {
   	- Even if we change a value in the react, it would rerender all the components.
   	- When we change a value, React rerenders all the components eventhough those components are not using that value.
   	- So, it is little bit difficult to stop rerendering each time. 
-  
   
 ## ASP.NET
 	-
