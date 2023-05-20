@@ -102,7 +102,7 @@
   > This would mean that above list is immutable (trying to change it will cause an UnsupportedOperationException exception to be thrown).
   > To make a mutable list that is a concrete ArrayList you can create an ArrayList from the immutable list:
   ```sh
-  ArrayList<String> places = new ArrayList<>(Arrays.asList("Buenos Aires", "Córdoba", "La Plata"));
+  ArrayList<String> places = Arrays.asList("Buenos Aires", "Córdoba", "La Plata");
   ```
   > And import the correct package:
 `import java.util.Arrays;`
@@ -132,12 +132,12 @@
   - Convert Array to ArrayList
   ```sh
   String[] strArray = new String[] {"house", "plane"};
-  List<String> list = new ArrayList(Arrays.asList(strArray));
+  List<String> list = Arrays.asList(strArray);
   ```
   
   ```sh
   Int[] arr = new int[5];
-  List<Integer> list = new ArrayList(Arrays.asList(arr));
+  List<Integer> list = Arrays.asList(arr);
   ```
   
   - Iterate through all elements in an array list using Iterator
