@@ -105,7 +105,8 @@
 `import java.util.Arrays;`
 
   - Convert ArrayList to array
-  ```
+  
+  ```sh
   // Creating an empty ArrayList of string type
   ArrayList<String> al = new ArrayList<String>();
 
@@ -124,6 +125,7 @@
   List<Integer> list = new ArrayList<>();
   int[] arr = list.toarray(new int(list.size());
   ```
+  
   > We need to pass in the size of ArrayList to the array.
 
   - Convert Array to ArrayList
