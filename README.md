@@ -123,7 +123,7 @@
   
   ```sh
   List<Integer> list = new ArrayList<>();
-  int[] arr = list.toarray(new int(list.size());
+  int[] arr = list.toArray(new int[list.size()]);
   ```
   
   > We need to pass in the size of ArrayList to the array.
